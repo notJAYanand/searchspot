@@ -1,4 +1,4 @@
-# spotistats
+# searchspot
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3fc17655-a710-4718-a291-7ba24e63fa85/deploy-status)](https://app.netlify.com/sites/searchspot/deploys)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 https://searchspot.netlify.app/
