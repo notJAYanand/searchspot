@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
 const CLIENT_ID = '3ca92eeaf0664164b665eefbb92882a8';
-const CLIENT_SECRET = '0e2195bbb1c64945b33e12880139c9a7';
+
+//they were treating warning as error, as it is not used im commenting it, uncomment when needed.
+// const CLIENT_SECRET = '0e2195bbb1c64945b33e12880139c9a7';
+
 // const REDIRECT_URI = 'http://localhost:3000/';
 const REDIRECT_URI = 'https://searchspot.netlify.app/';
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
@@ -63,27 +65,27 @@ function App() {
 
   console.log(artists);
 
-    const renderArtists=()=>{
-      return (artists.map(artist=>{
-        return(
+  const renderArtists = () => {
+    return (artists.map(artist => {
+      return (
         <div key={artist.id}>
-        {artist.images.length ?
-        <div className="artistImage" style={{}}><img src={artist.images[0].url} style={{width:'40vh',borderRadius:'2000px'}}></img></div> 
-        :
-        <div className="artistImage" style={{alignItems:'center',backgroundColor:'#ffffff',width:'40vh',borderRadius:'2000px'}}>null</div>}
+          {artist.images.length ?
+            <div className="artistImage" style={{}}><img src={artist.images[0].url} style={{ width: '40vh', borderRadius: '2000px' }} alt={"artist-art"}></img></div>
+            :
+            <div className="artistImage" style={{ alignItems: 'center', backgroundColor: '#ffffff', width: '40vh', borderRadius: '2000px' }}>null</div>}
           <a href={artist.external_urls.spotify}>{artist.name}</a>
         </div>);
-      }))
-    }
+    }))
+  }
 
   return (
     <div className="App">
-      
+
       <header>
-      <div className="head">
-      <div className="headText">Spotify Artist
-      </div>
-      </div>
+        <div className="head">
+          <div className="headText">Spotify Artist
+          </div>
+        </div>
       </header>
 
       {!token ?
@@ -95,7 +97,7 @@ function App() {
       {
         token ?
           (<form>
-          {/* <SearchField/> */}
+            {/* <SearchField/> */}
             <input type={"text"} onChange={(e) => { setSearchKey(e.target.value) }}></input>
             <button type={"submit"} onClick={searchArtist}>Search</button>
           </form>) : (<h2>Please Login</h2>)
