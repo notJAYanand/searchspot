@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Header from './components/Header';
 
 
 const CLIENT_ID = '3ca92eeaf0664164b665eefbb92882a8';
@@ -80,13 +81,8 @@ function App() {
 
   return (
     <div className="App">
-
-      <header>
-        <div className="head">
-          <div className="headText">Spotify Artist
-          </div>
-        </div>
-      </header>
+    <div className="head"><Header/></div>
+      
 
       {!token ?
         (<a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
