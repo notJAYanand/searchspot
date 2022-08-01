@@ -35,7 +35,7 @@ function App() {
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
-
+    setArtistsData([]);
   }
 
   //Search
