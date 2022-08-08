@@ -1,0 +1,8 @@
+ADD DRAWER_
+FIX SEARCH BAR APPEARANCE
+
+## Features to come:-
+* Better UI
+* Compare Monthly Listners
+* Artists Top Charts.
+* More...

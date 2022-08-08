@@ -1,0 +1,12 @@
+.artistImage{
+    
+    height: 40vh;
+    width: 40vh;
+    object-fit:cover;
+    background-size:cover;
+    background-position:center;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 5vh;
+}
