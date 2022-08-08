@@ -57,8 +57,8 @@ const CLIENT_ID = "3ca92eeaf0664164b665eefbb92882a8";
 //they were treating warning as error, as it is not used im commenting it, uncomment when needed.
 // const CLIENT_SECRET = '';
 
-const REDIRECT_URI = "http://localhost:3000/";
-// const REDIRECT_URI = 'https://searchspot.netlify.app/';
+// const REDIRECT_URI = "http://localhost:3000/";
+const REDIRECT_URI = 'https://searchspot.netlify.app/';
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
 
