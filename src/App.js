@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
     
-      <Grid container xs={12} lg={12} sm={12}>
+      <Grid container>
       <Grid item xs={12} lg={12} sm={12}>
         <div >
           <div className="head">
@@ -22,10 +22,12 @@ function App() {
           {/* <div>
           <footer style={{marginTop:''}}>©notJAYanand 2022</footer>
           </div> */}
-          <Footer/>
+          
         </div>
       </Grid>
     </Grid>
+      
+    <Footer/>
     </div>
 
   );

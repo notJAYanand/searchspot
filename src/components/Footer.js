@@ -1,12 +1,16 @@
+import { Typography } from "@material-ui/core";
 import React from "react";
 
 export default function Footer() {
   return (
     <>
     
-    <div style={{marginTop:'45vh'}}>
-    <div style={{marginBottom:'5vh',height:'1vh', width:'98.7vw',backgroundColor:'black'}}></div>
-      <footer style={{ marginTop: "" }}>©notJAYanand 2022</footer>
+    <div style={{marginTop:'41.7vh'}}>
+    <div style={{height:'', width:'100vw',backgroundColor:'#113225',paddingBottom:'30.8vh'}}></div>
+      <footer style={{ backgroundColor:'#113225' ,width:'100vw'}}>
+      <Typography style={{color:'#fffffe'}}>© notJAYanand 2022</Typography>
+      
+      </footer>
     </div>
     </>
   );

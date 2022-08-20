@@ -1,7 +1,7 @@
 import React from 'react'
 import './css/Header.css';
-import { Grid, IconButton } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { Grid } from '@material-ui/core';
+
 
 
 
@@ -15,11 +15,11 @@ export default function Header() {
     //   setState(open);
     // };
 return(
-        <Grid container xs={12} sm={12} lg={12}>
-            <Grid item lg={0.5} sm={0.5} xs={0.5} spacing={0}>
+        <Grid container>
+            {/* <Grid item lg={0.5} sm={0.5} xs={0.5} spacing={0}>
             <div className="menuIcon" >
-            <IconButton color='inherit'><MenuIcon /></IconButton></div>
-            </Grid>
+            {/* <IconButton color='inherit'><MenuIcon /></IconButton></div> */}
+            {/* </Grid> */} 
             <Grid item lg={1} sm={1} xs={1}>
                 <div className="headText">
                     searchspot

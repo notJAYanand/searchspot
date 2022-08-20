@@ -1,11 +1,14 @@
 .head {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: 
+  #cc1816;
   height: 6vh;
 }
 
 .headText {
+  padding-left: 2vw;
   padding-top: 1vh;
+  font-size:1.2rem;
 }
 .menuIcon {
   margin-top: -1vh;

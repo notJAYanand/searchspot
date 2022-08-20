@@ -2,9 +2,17 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./css/Search.css";
-import { Avatar, Button, InputBase, Typography } from "@material-ui/core";
+import {Button,  IconButton,  InputBase, Typography } from "@material-ui/core";
 import { makeStyles, alpha } from "@material-ui/core/styles";
-
+import MenuIcon from '@material-ui/icons/Menu';
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@material-ui/core/Grid';
 //FIX SEARCH TODO
 
 const useStyles = makeStyles((theme) => ({
@@ -49,6 +57,13 @@ const useStyles = makeStyles((theme) => ({
         width: "20ch",
       },
     },
+  },
+  artistCard:{
+    maxWidth: 345,
+  },
+  media:{
+    height:'40vh',
+    paddingTop:0,
   },
 }));
 
@@ -106,13 +121,8 @@ export default function Search() {
     // console.log({data});
     setArtistsData(data.artists.items);
   };
-
-  console.log(artists);
-
-  const renderArtists = () => {
-    return artists.map((artist) => {
-      return (
-        <div key={artist.id}>
+/**
+ * <div key={artist.id}>
           {artist.images.length ? (
             <div className="artistImage" style={{}}>
               <img
@@ -134,12 +144,76 @@ export default function Search() {
             {artist.followers.total} Followers
           </Typography>
             
-            
+          
         </div>
+ */
+    
+  console.log(artists);
+  
+  const openInNewTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+  //utility to convert 100000 -> 100,000
+  //used regex here(or grepped)
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  const renderArtists = () => {
+    return artists.map((artist) => {
+      let urlSpotify= artist?.external_urls.spotify;
+      let imageUrl;
+      artist?.images[0]?.url ? imageUrl= (artist?.images[0]?.url) : imageUrl= `https://eu.ui-avatars.com/api/?name=${artist.name}&size=250`;
+      return (
+        <Grid item lg={3} md={4} xs={12} sm={6} key={artist.id} >
+        <div >
+          <Card className={classes.artistCard}>
+          <CardActionArea>
+            <CardMedia
+            component="img"
+            alt={artist.name}
+            height="40vh"
+            width="40vh"
+            image={imageUrl}
+            className={classes.media}
+            />
+            <CardContent><Typography variant="h5" component="h2">{artist.name}</Typography>
+            <Typography variant="caption" component="h5">{numberWithCommas(artist?.followers?.total)} Followers</Typography></CardContent>
+            
+          </CardActionArea>
+          <CardActions>
+          
+        <Button size="small" color="primary" onClick={()=>{openInNewTab(urlSpotify)}}>
+        
+          Spotify
+        </Button>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
+        </Card>
+        </div>
+        </Grid>
+          
+          
+          
+        
+        
       );
     });
   };
   const classes = useStyles();
+
+  //Menu Open
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     // <div>Search</div>
 
@@ -185,11 +259,29 @@ export default function Search() {
           Login to Spotify
         </Button>
       ) : (
-        <Button onClick={logout} style={{marginLeft:'80vw', marginTop:'-5vw',backgroundColor:''}}>Logout</Button>
+        <div><IconButton onClick={handleMenuOpen} style={{marginLeft:'80vw', marginTop:'-15vw',backgroundColor:''}}><MenuIcon/></IconButton>
+        <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        
+      >
+        <MenuItem onClick={()=>{logout(); handleClose();}}>Logout</MenuItem>
+      </Menu>
+        {/* <Button onClick={logout} style={{marginLeft:'80vw', marginTop:'-15vw',backgroundColor:''}}>Logout</Button> */}
+        
+        </div>
+        
       )}
 
-      
-      {renderArtists()}
+      <Grid container spacing={3} direction="row" alignItems="center" justifyContent="center">
+          
+            {renderArtists()}
+          
+      </Grid>
+
     </div>
   );
 }
