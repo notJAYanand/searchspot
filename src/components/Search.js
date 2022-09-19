@@ -13,6 +13,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
+// import ArtistModal from './ArtistModal';
 //FIX SEARCH TODO
 
 const useStyles = makeStyles((theme) => ({
@@ -149,7 +150,30 @@ export default function Search() {
  */
     
   console.log(artists);
+  // let toggleArtistModal=false;
+  /**
+   * food for thought
+    const [artistID,setArtistId]= useState("");
+   * and card action area ke onClick me setArtistId kar denge us artist ke id ka 
+    
+   */
+
+  const [artistIdToBeSearched,setArtistIdToBeSearched]= useState(""); 
   
+  // const [toggleArtistModal,setToggleArtistModal]= useState(false);
+
+  // const handleArtistModal=()=>{
+    
+  //   setToggleArtistModal(!toggleArtistModal);
+  //   // console.log(toggleArtistModal);
+
+  //   // return(
+  //   //   <div>
+  //   //     <ArtistModal/>
+  //   //   </div>
+  //   // );
+  // }
+
   const openInNewTab = url => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -164,10 +188,13 @@ export default function Search() {
       let imageUrl;
       artist?.images[0]?.url ? imageUrl= (artist?.images[0]?.url) : imageUrl= `https://eu.ui-avatars.com/api/?name=${artist.name}&size=250`;
       return (
-        <Grid item lg={3} md={4} xs={12} sm={6} key={artist.id} >
+        <Grid item lg={3} md={4} xs={12} sm={6} key={artist.id}>
         <div >
           <Card className={classes.artistCard}>
-          <CardActionArea>
+          <CardActionArea onClick={()=>{
+            setArtistIdToBeSearched(artist?.id);
+            console.log(artistIdToBeSearched);
+            }}>
             <CardMedia
             component="img"
             alt={artist.name}
@@ -245,9 +272,9 @@ export default function Search() {
               opacity: "0.4",
             }}
           />
-          <button type={"submit"} onClick={searchArtist} style={{marginLeft:'0.905vw'}}>
+          <Button type={"submit"} onClick={searchArtist} style={{marginLeft:'0.905vw'}}>
             Search
-          </button>
+          </Button>
         </form>
       ) : (
         <h2> New here? Please Login.</h2>
@@ -277,7 +304,6 @@ export default function Search() {
       )}
 
       <Grid container spacing={3} direction="row" alignItems="center" justifyContent="center">
-          
             {renderArtists()}
           
       </Grid>
