@@ -6,7 +6,7 @@ https://searchspot.netlify.app/
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Features to come:-
 * Better UI
-* Compare Monthly Listners
+* Compare Monthly Listners (Not Possible Currently)
 * Artists Top Charts.
 * More...
 
